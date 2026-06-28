@@ -77,8 +77,8 @@ header {
 }
 
 .logo img {
-    width:42px;
-    height:42px;
+    width:55px;
+    height:55px;
     object-fit:contain;
     filter: invert(1); /* درخشان کردن لوگوی مشکی روی بک‌گراند تاریک */
 }
@@ -304,7 +304,7 @@ header {
 
 .order-container {
     background:var(--card);
-    padding:70px;
+    padding:55px;
     border-radius:30px;
     border:1px solid var(--border);
     text-align:center;
@@ -320,7 +320,7 @@ header {
 }
 
 .order-container h2 {
-    font-size:46px;
+    font-size:40px;
     margin-bottom:20px;
 }
 
