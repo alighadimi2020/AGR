@@ -1,324 +1,358 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+:root {
+    --bg:#050505;
+    --card:#101010;
+    --card2:#171717;
+    --border:#2d2d2d;
+    --text:#ffffff;
+    --muted:#b5b5b5;
+    --hover:#1e1e1e;
+    --radius:22px;
+    --shadow:0 10px 35px rgba(0,0,0,.35);
+}
+
+body {
+    font-family:"IBM Plex Sans Arabic",sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+    line-height:1.8;
+}
+
+img {
+    max-width:100%;
+    display:block;
+}
+
+a {
+    text-decoration:none;
+    color:inherit;
+}
+
+section {
+    width:min(1200px,92%);
+    margin:auto;
+    padding:120px 0;
+}
+
+h1,h2,h3 {
+    font-weight:700;
+}
+
+p {
+    color:var(--muted);
+}
+
 /* ==========================================================================
-   اصلاح بخش هدر برای جلوگیری از شکستن منو
+   بخش هدر و ناوبری همبرگری (کاملاً هماهنگ با تم اصلی شما)
    ========================================================================== */
 header {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:85px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 7%;
+    background:rgba(5,5,5,.72);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.05);
+    z-index:999;
+}
+
+.logo {
+    display:flex;
+    align-items:center;
+}
+
+.logo img {
+    width:42px;
+    height:42px;
+    object-fit:contain;
+    filter: invert(1); /* درخشان کردن لوگوی مشکی روی بک‌گراند تاریک */
+}
+
+/* دکمه همبرگری مینی‌مال سفارشی */
+.hamburger-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    z-index: 1001;
+    padding: 8px;
+}
+
+.hamburger-btn span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background-color: var(--text);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* تبدیل خطوط همبرگری به علامت X هنگام باز شدن منو */
+.hamburger-btn.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+.hamburger-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-btn.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* منوی کشویی هماهنگ با رنگ متغیر دیتای شما */
+.nav-menu {
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0;
-    height: 75px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 4%; /* کمی فاصله از کناره‌ها را کمتر کردیم تا فضای بیشتری باز شود */
-    background: rgba(12, 13, 15, 0.75);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    z-index: 1000;
-}
-
-header .logo {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0; /* مانع از کوچک شدن یا مچاله شدن لوگو می‌شود */
-}
-
-header .logo img {
-    height: 62px; /* سایز متناسب برای لوگوی تک */
-    width: auto;
-    filter: invert(1); /* سفید کردن لوگوی مشکی بدون پس‌زمینه */
-}
-
-header nav {
-    display: flex;
-    gap: 24px; /* فاصله منطقی بین آیتم‌های منو */
-    align-items: center;
-    flex-wrap: nowrap; /* به هیچ وجه اجازه نمی‌دهد منو به خط بعد برود */
-}
-
-header nav a {
-    font-size: 0.95rem;
-    color: #c0c4cd;
-    transition: color 0.3s ease;
-    font-weight: 500;
-    white-space: nowrap; /* مانع از دو خطی شدن متن آیتم‌ها (مثل ثبت سفارش) می‌شود */
-}
-
-header nav a:hover {
-    color: #ffffff;
-}
-
-/* متمایز کردن دکمه ثبت سفارش در منو برای جذابیت بیشتر (اختیاری) */
-header nav a.nav-order-btn {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 8px 16px;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-header nav a.nav-order-btn:hover {
-    background: #ffffff;
-    color: #000000;
-}
-
-/* ==========================================================================
-   ۳. بخش هیرو (Hero Section) - ادامه
-   ========================================================================== */
-.hero {
-    min-height: 100vh;
+    right: -100%;
+    width: 300px;
+    height: 100vh;
+    background: var(--card); /* استفاده از رنگ کارت اصلی شما برای منو */
+    border-left: 1px solid var(--border);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    padding: 120px 20px 60px 20px;
-    background: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%);
+    gap: 35px;
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1000;
+}
+
+.nav-menu.open {
+    right: 0;
+}
+
+.nav-menu a {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--muted);
+    transition: .3s;
+    position: relative;
+}
+
+.nav-menu a:hover {
+    color: var(--text);
+}
+
+/* ==========================================================================
+   بخش هیرو، پورتفولیو و خدمات (کدهای دست‌نخورده و اصلی شما)
+   ========================================================================== */
+.hero {
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
 }
 
 .hero h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 24px;
-    letter-spacing: -1px;
+    font-size:74px;
+    line-height:1.1;
+    max-width:950px;
+    margin-bottom:25px;
 }
 
 .hero p {
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    color: var(--text-secondary);
-    max-width: 600px;
-    margin-bottom: 40px;
-    font-weight: 400;
+    font-size:22px;
+    max-width:720px;
+    margin-bottom:45px;
 }
 
-.hero .button {
-    background-color: var(--accent-color);
-    color: #000000;
-    padding: 14px 36px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: transform var(--transition-fast), background-color var(--transition-fast);
+.button {
+    padding:18px 42px;
+    background:white;
+    color:black;
+    border-radius:60px;
+    font-weight:700;
+    transition:.35s;
 }
 
-.hero .button:hover {
-    background-color: var(--accent-hover);
-    transform: translateY(-2px);
+.button:hover {
+    transform:translateY(-6px);
+    box-shadow:0 15px 35px rgba(255,255,255,.18);
 }
 
-/* ترفند هوشمندانه برای لوگوی مشکی بدون بک‌گراند */
-header .logo img {
-    height: 40px;
-    width: auto;
-    filter: invert(1); /* این خط رنگ‌های مشکی لوگو را سفید می‌کند تا روی تم دارک عالی دیده شود */
-}
-
-/* ==========================================================================
-   ۴. بخش نمونه کارها (کارت‌های شیشه‌ای مدرن)
-   ========================================================================== */
-#portfolio {
-    padding: 100px 5%;
-}
-
-#portfolio h2, #services h2, #order h2 {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 60px;
+#portfolio h2 {
+    font-size:46px;
+    margin-bottom:70px;
+    text-align:center;
 }
 
 #portfolio-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 40px;
-    max-width: 1100px;
-    margin: 0 auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:35px;
 }
 
 .portfolio-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 24px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: border-color var(--transition-fast), transform var(--transition-fast);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:24px;
+    overflow:hidden;
+    transition:.4s;
+    box-shadow:var(--shadow);
 }
 
 .portfolio-card:hover {
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-5px);
+    transform:translateY(-10px);
+    background:var(--card2);
 }
 
 .portfolio-card img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    object-position: top; /* اسکرین‌شات سایت‌ها را از بالاترین قسمت نشان می‌دهد */
-    border-bottom: 1px solid var(--border-color);
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.portfolio-card:hover img {
+    transform:scale(1.05);
 }
 
 .portfolio-content {
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
+    padding:28px;
 }
 
-.portfolio-content .category {
-    align-self: flex-start;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid var(--border-color);
-    padding: 6px 14px;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    margin-bottom: 20px;
+.category {
+    display:inline-block;
+    padding:7px 16px;
+    background:#202020;
+    border-radius:50px;
+    font-size:13px;
+    margin-bottom:18px;
+    color:#ddd;
 }
 
 .portfolio-content h3 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 15px;
+    font-size:28px;
+    margin-bottom:12px;
 }
 
 .portfolio-content p {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    margin-bottom: 25px;
+    margin-bottom:22px;
 }
 
-.portfolio-content .price {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 30px;
+.price {
+    font-size:24px;
+    font-weight:700;
+    margin-bottom:25px;
 }
 
-.portfolio-content .buttons {
-    display: flex;
-    gap: 15px;
+.buttons {
+    display:flex;
+    gap:14px;
 }
 
-.portfolio-content .buttons a {
-    padding: 14px 32px;
-    border-radius: 14px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: all var(--transition-fast);
-    text-align: center;
+.buttons a {
+    flex:1;
+    padding:15px;
+    text-align:center;
+    border-radius:14px;
+    font-weight:600;
+    transition:.3s;
 }
 
-.portfolio-content .buttons a:first-child {
-    background: var(--accent-color);
-    color: #000000;
+.buttons a:first-child {
+    background:white;
+    color:black;
 }
 
-.portfolio-content .buttons a:first-child:hover {
-    background: var(--accent-hover);
+.buttons a:last-child {
+    border:1px solid #333;
 }
 
-.portfolio-content .buttons a:last-child {
-    background: transparent;
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
-}
-
-.portfolio-content .buttons a:last-child:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-/* ==========================================================================
-   ۵. بخش خدمات و ثبت سفارش
-   ========================================================================== */
-#services {
-    padding: 100px 5%;
-    background: rgba(255, 255, 255, 0.01);
+.buttons a:hover {
+    transform:translateY(-4px);
 }
 
 .services {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 25px;
-    max-width: 1100px;
-    margin: 0 auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    margin-top:50px;
 }
 
 .services div {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 40px 30px;
-    border-radius: 16px;
-    font-size: 1.15rem;
-    font-weight: 600;
-    text-align: center;
-    transition: all var(--transition-fast);
+    padding:35px;
+    background:var(--card);
+    border-radius:20px;
+    border:1px solid var(--border);
+    font-size:20px;
+    font-weight:600;
+    transition:.3s;
 }
 
 .services div:hover {
-    border-color: rgba(255, 255, 255, 0.15);
-    transform: translateY(-3px);
-}
-
-#order {
-    padding: 100px 5%;
+    background:var(--card2);
+    transform:translateY(-8px);
 }
 
 .order-container {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    background: linear-gradient(180deg, rgba(22,22,26,0.4) 0%, rgba(11,11,12,0) 100%);
-    border: 1px solid var(--border-color);
-    padding: 60px 40px;
-    border-radius: 24px;
+    background:var(--card);
+    padding:70px;
+    border-radius:30px;
+    border:1px solid var(--border);
+    text-align:center;
+}
+
+.section-tag {
+    display:inline-block;
+    padding:8px 18px;
+    background:#1b1b1b;
+    border-radius:40px;
+    margin-bottom:25px;
+    color:#d9d9d9;
+}
+
+.order-container h2 {
+    font-size:46px;
+    margin-bottom:20px;
+}
+
+.order-container p {
+    max-width:700px;
+    margin:0 auto 45px;
 }
 
 .order-links {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 15px;
-    margin-top: 30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
 }
 
 .order-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--border-color);
-    padding: 16px;
-    border-radius: 12px;
-    font-weight: 500;
-    transition: all var(--transition-fast);
+    padding:22px;
+    background:#181818;
+    border:1px solid #2a2a2a;
+    border-radius:18px;
+    transition:.35s;
+    font-weight:600;
 }
 
 .order-card:hover {
-    background: var(--accent-color);
-    color: #000000;
-    font-weight: 600;
+    background:white;
+    color:black;
+    transform:translateY(-6px);
 }
 
-/* ==========================================================================
-   ۶. ریسپانسیو (گوشی و تبلت)
-   ========================================================================== */
-@media (max-width: 768px) {
-    header nav { gap: 15px; }
-    header nav a { font-size: 0.85rem; }
-    .portfolio-content { padding: 25px; }
-    .portfolio-card img { height: 250px; }
-    .portfolio-content .buttons { flex-direction: column; }
-}
-
-/* ==========================================================================
-   انیمیشن ظهور نرم کارت‌ها (Scroll Animation)
-   ========================================================================== */
-.fade-in-card {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.fade-in-card.visible {
-    opacity: 1;
-    transform: translateY(0);
+/* استایل بهینه‌سازی شده برای موبایل (منوی همبرگری در نمایشگر کوچک عریض‌تر نشود) */
+@media (max-width: 480px) {
+    .nav-menu {
+        width: 100%;
+    }
 }
