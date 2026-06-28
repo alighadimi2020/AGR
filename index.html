@@ -1,160 +1,74 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>AGR Studio | Web Design Portfolio</title>
-
     <meta name="description" content="AGR Studio - Web Design & Digital Solutions">
-
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
 
 <header>
-
-<div class="logo">
-
-    <img src="images/logo/logo.png" alt="AGR Studio">
-
-    <span>
-
-        AGR Studio
-
-    </span>
-
-</div>
+    <div class="logo">
+        <img src="images/logo/logo.png" alt="AGR Studio">
+    </div>
 
     <nav>
-
         <a href="#">خانه</a>
-
         <a href="#portfolio">نمونه کارها</a>
-
         <a href="#services">خدمات</a>
-
-        <a href="#order">ثبت سفارش</a>
+        <a href="#order" class="nav-order-btn">ثبت سفارش</a>
     </nav>
-
 </header>
 
-<section class="hero">
+<main>
+    <section class="hero">
+        <h1>
+            Modern Websites
+            <br>
+            For Modern Businesses
+        </h1>
+        <p>طراحی سایت، فروشگاه اینترنتی، منوی دیجیتال و خدمات گرافیکی</p>
+        <a href="#portfolio" class="button">مشاهده نمونه کارها</a>
+    </section>
 
-    <h1>
+    <section id="portfolio">
+        <h2>نمونه سایت‌ها</h2>
+        <div id="portfolio-container"></div>
+    </section>
 
-        Modern Websites
-
-        <br>
-
-        For Modern Businesses
-
-    </h1>
-
-    <p>
-
-        طراحی سایت، فروشگاه اینترنتی، منوی دیجیتال و خدمات گرافیکی
-
-    </p>
-
-    <a href="#portfolio" class="button">
-
-        مشاهده نمونه کارها
-
-    </a>
-
-</section>
-
-<section id="portfolio">
-
-    <h2>
-
-        نمونه سایت‌ها
-
-    </h2>
-
-    <div id="portfolio-container">
-
-    </div>
-
-</section>
-
-<section id="services">
-
-    <h2>
-
-        خدمات
-
-    </h2>
-
-    <div class="services">
-
-        <div>طراحی سایت</div>
-
-        <div>منوی دیجیتال</div>
-
-        <div>طراحی گرافیک</div>
-
-        <div>ثبت فروشگاه در ترب و باسلام</div>
-
-    </div>
-
-</section>
-
-<section id="order">
-
-    <div class="order-container">
-
-        <span class="section-tag">
-            AGR Studio
-        </span>
-
-        <h2>
-            ثبت سفارش
-        </h2>
-
-        <p>
-            برای ثبت سفارش طراحی سایت، فروشگاه اینترنتی، منوی دیجیتال یا خدمات گرافیکی،
-            از طریق یکی از راه‌های ارتباطی زیر با من در تماس باشید.
-        </p>
-
-        <div class="order-links">
-
-            <a href="#" class="order-card">
-                WhatsApp
-            </a>
-
-            <a href="#" class="order-card">
-                Telegram
-            </a>
-
-            <a href="#" class="order-card">
-                Instagram
-            </a>
-
-            <a href="#" class="order-card">
-                LinkedIn
-            </a>
-
-            <a href="#" class="order-card">
-                Email
-            </a>
-
-            <a href="#" class="order-card">
-                GitHub
-            </a>
-
+    <section id="services">
+        <h2>خدمات</h2>
+        <div class="services">
+            <div>طراحی سایت</div>
+            <div>منوی دیجیتال</div>
+            <div>طراحی گرافیک</div>
+            <div>ثبت فروشگاه در ترب و باسلام</div>
         </div>
+    </section>
 
-    </div>
+    <section id="order">
+        <div class="order-container">
+            <span class="section-tag">AGR Studio</span>
+            <h2>ثبت سفارش</h2>
+            <p>
+                برای ثبت سفارش طراحی سایت، فروشگاه اینترنتی، منوی دیجیتال یا خدمات گرافیکی،
+                از طریق یکی از راه‌های ارتباطی زیر با من در تماس باشید.
+            </p>
 
-</section>
+            <div class="order-links">
+                <a href="#" class="order-card">WhatsApp</a>
+                <a href="#" class="order-card">Telegram</a>
+                <a href="#" class="order-card">Instagram</a>
+                <a href="#" class="order-card">LinkedIn</a>
+                <a href="#" class="order-card">Email</a>
+                <a href="#" class="order-card">GitHub</a>
+            </div>
+        </div>
+    </section>
+</main>
+
 <script src="app.js"></script>
-
 </body>
-
 </html>
