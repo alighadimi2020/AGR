@@ -52,3 +52,22 @@ function setupScrollAnimations() {
 
     cards.forEach(card => observer.observe(card));
 }
+// اسکریپت فعال‌سازی منوی همبرگری
+const hamburgerToggle = document.getElementById('hamburger-toggle');
+const navMenu = document.getElementById('nav-menu');
+
+if (hamburgerToggle && navMenu) {
+    hamburgerToggle.addEventListener('click', () => {
+        // فعال کردن افکت دکمه به X و باز شدن باکس منو
+        hamburgerToggle.classList.toggle('active');
+        navMenu.classList.toggle('open');
+    });
+
+    // بستن خودکار منو پس از کلیک روی هر کدام از لینک‌ها
+    navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburgerToggle.classList.remove('active');
+            navMenu.classList.remove('open');
+        });
+    });
+}
