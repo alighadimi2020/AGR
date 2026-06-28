@@ -375,8 +375,8 @@ header {
 
 /* استایل لوگوی بزرگ که می‌خواهی اول سایت (بخش هیرو) نمایش داده شود */
 .hero-logo {
-    width: 120px; /* سایز بزرگ و مشخص */
-    height: 120px;
+    width: 250px; /* سایز بزرگ و مشخص */
+    height: 250px;
     object-fit: contain;
     margin-bottom: 30px;
     filter: invert(1); /* دقیقاً هماهنگ با رنگِ سفیدِ درخشانِ لوگویِ هدر */
