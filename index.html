@@ -71,8 +71,70 @@
             </div>
         </div>
     </section>
+    <section id="reviews">
+
+    <div class="reviews-container">
+
+        <h2>نظرات مشتریان</h2>
+
+        <p class="reviews-subtitle">
+            تجربه مشتریان AGR Studio
+        </p>
+
+        <div id="comments-list">
+
+        </div>
+
+        <form id="comment-form">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="نام شما"
+                required
+            >
+
+            <input
+                type="email"
+                id="email"
+                placeholder="ایمیل"
+                required
+            >
+
+            <select id="rating">
+
+                <option value="5">★★★★★</option>
+                <option value="4">★★★★☆</option>
+                <option value="3">★★★☆☆</option>
+                <option value="2">★★☆☆☆</option>
+                <option value="1">★☆☆☆☆</option>
+
+            </select>
+
+            <textarea
+                id="message"
+                placeholder="نظر خود را بنویسید..."
+                required
+            ></textarea>
+
+            <button type="submit">
+
+                ارسال نظر
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
 </main>
 
 <script src="app.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="comments.js"></script>
+
 </body>
 </html>
