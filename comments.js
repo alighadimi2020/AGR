@@ -51,7 +51,7 @@ async function loadComments() {
             </div>
 
             <div class="comment-message">
-                ${comment.message}
+               ${comment.message.replace(/\n/g,"<br>")}
             </div>
 
         </div>
