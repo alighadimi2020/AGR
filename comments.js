@@ -39,16 +39,30 @@ async function loadComments() {
 
             <div class="comment-header">
 
-                <div class="comment-name">
-                    ${comment.name}
-                </div>
+    <div class="comment-user">
 
-                <div class="comment-stars">
-                    ${"★".repeat(comment.rating)}
-                    ${"☆".repeat(5-comment.rating)}
-                </div>
+        <div class="avatar">
 
+            ${comment.name.charAt(0).toUpperCase()}
+
+        </div>
+
+        <div>
+
+            <div class="comment-name">
+                ${comment.name}
             </div>
+
+            <div class="comment-stars">
+                ${"★".repeat(comment.rating)}
+                ${"☆".repeat(5-comment.rating)}
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
             <div class="comment-message">
                ${comment.message.replace(/\n/g,"<br>")}
@@ -59,7 +73,23 @@ async function loadComments() {
         `;
 
     });
+document.querySelectorAll(".comment-card").forEach((card,index)=>{
 
+    card.style.opacity="0";
+
+    card.style.transform="translateY(20px)";
+
+    setTimeout(()=>{
+
+        card.style.transition=".5s";
+
+        card.style.opacity="1";
+
+        card.style.transform="translateY(0)";
+
+    },index*120);
+
+});
 }
 
 form.addEventListener("submit", async function(e){
